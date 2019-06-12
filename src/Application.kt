@@ -12,13 +12,8 @@ import io.ktor.server.netty.Netty
 fun main(args: Array<String>) {
     val server = embeddedServer(Netty, 8080) {
         routing {
-            get("/") {
-                call.respondText("Root Conference Endpoint", ContentType.Text.Html)
-            }
-
-            get("/agenda") {
-                call.respondText("Conference agenda data...", ContentType.Text.Plain)
-            }
+            agenda()
+            event()
         }
     }
     server.start(wait = true)
